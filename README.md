@@ -4,11 +4,7 @@ A small static bakery landing page for Baba Cake Shop in Cidco, Chhatrapati Samb
 
 ## Live URL
 
-GitHub Pages URL will be available after the repository is pushed and Pages is enabled.
-
-Typical format:
-
-https://<your-github-username>.github.io/baba-cake-shop/
+https://keerthi0168.github.io/BABA-S-CAFE-ig/
 
 ## Preview locally
 
