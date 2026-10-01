@@ -4,7 +4,7 @@ A small static bakery landing page for Baba Cake Shop in Cidco, Chhatrapati Samb
 
 ## Live URL
 
-https://keerthi0168.github.io/BABA-S-CAFE-ig/
+https://baba-s-cafe-ig-b3qp-iz5u1id1t-keerthi0168s-projects.vercel.app/
 
 ## Preview locally
 
@@ -20,7 +20,7 @@ http://localhost:8000
 
 ## Deployment
 
-This project is configured for GitHub Pages deployment using a static workflow in `.github/workflows/deploy-pages.yml`.
+This project is deployed on Vercel as a static storefront.
 
 ## Features
 
