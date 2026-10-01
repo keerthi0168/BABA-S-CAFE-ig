@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baba Cake Shop — Fresh Cakes in Cidco, Chhatrapati Sambhajinagar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Work+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream:  '#FBF1DE',
+          paper:  '#FFFDF8',
+          cocoa:  '#3B2417',
+          cocoasoft: '#6B4A36',
+          frosting: '#E38EA6',
+          frostingdeep: '#C85A78',
+          gold:   '#C99A3A',
+        },
+        fontFamily: {
+          display: ['Fraunces','serif'],
+          body: ['Work Sans','sans-serif'],
+          script: ['Caveat','cursive'],
+        },
+        boxShadow: {
+          soft: '0 10px 30px rgba(59,36,23,0.10)',
+          lift: '0 20px 45px rgba(59,36,23,0.18)',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html{ scroll-behavior:smooth; }
+  body{ background:#FBF1DE; }
+  ::selection{ background:#E38EA6; color:#FFFDF8; }
+
+  /* scroll reveal */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+  .reveal.in{ opacity:1; transform:none; }
+  .reveal-scale{ opacity:0; transform:scale(.92); transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1); }
+  .reveal-scale.in{ opacity:1; transform:scale(1); }
+  .stagger.in > *{ transition-delay: calc(var(--i, 0) * 90ms); }
+
+  /* nav shrink */
+  #nav{ transition: box-shadow .3s ease, padding .3s ease, background .3s ease; }
+  #nav.scrolled{ box-shadow: 0 8px 24px rgba(59,36,23,0.08); }
+
+  /* blobs */
+  @keyframes float1{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(20px,-24px) scale(1.06);} }
+  @keyframes float2{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(-18px,18px) scale(1.08);} }
+  .blob1{ animation: float1 9s ease-in-out infinite; }
+  .blob2{ animation: float2 11s ease-in-out infinite; }
+
+  /* whatsapp pulse */
+  @keyframes pulse-ring{ 0%{ box-shadow:0 0 0 0 rgba(37,211,102,.55);} 70%{ box-shadow:0 0 0 16px rgba(37,211,102,0);} 100%{ box-shadow:0 0 0 0 rgba(37,211,102,0);} }
+  .wa-pulse{ animation: pulse-ring 2.4s cubic-bezier(.4,0,.6,1) infinite; }
+
+  /* tilt cards */
+  .tilt{ transition: transform .25s ease, box-shadow .25s ease; transform-style:preserve-3d; }
+  .tilt:hover{ transform: translateY(-6px) rotate(-0.4deg) scale(1.015); }
+
+  /* marquee */
+  @keyframes marquee{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+  .marquee-track{ animation: marquee 26s linear infinite; }
+  .marquee-wrap:hover .marquee-track{ animation-play-state: paused; }
+
+  /* gradient text */
+  .grad-text{ background:linear-gradient(90deg,#C85A78,#C99A3A); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+  /* scallop */
+  .scallop{ color:#FFFDF8; }
+  .scallop.on-cream{ color:#FBF1DE; }
+
+  /* lightbox */
+  #lightbox{ transition: opacity .25s ease; }
+  #lightbox.hidden-lb{ opacity:0; pointer-events:none; }
+  #lightbox:not(.hidden-lb){ opacity:1; }
+
+  /* count up ready */
+  .countup{ font-variant-numeric: tabular-nums; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal,.reveal-scale{ opacity:1!important; transform:none!important; transition:none!important; }
+    .blob1,.blob2,.wa-pulse,.marquee-track{ animation:none!important; }
+  }
+</style>
+</head>
+<body class="font-body text-cocoa antialiased overflow-x-hidden">
+
+<!-- NAV -->
+<header id="nav" class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-cocoa/10">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5">
+      <svg class="w-9 h-9" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" fill="#FFFDF8" stroke="#C99A3A" stroke-width="1.5"/>
+        <rect x="11" y="22" width="18" height="7" rx="2" fill="none" stroke="#3B2417" stroke-width="1.5"/>
+        <path d="M11 22c0-1.5 1-2.5 2.5-2.5S16 20.5 16 22M16 22c0-1.5 1-2.5 2.5-2.5S21 20.5 21 22M21 22c0-1.5 1-2.5 2.5-2.5S26 20.5 26 22" stroke="#C85A78" stroke-width="1.6" stroke-linecap="round"/>
+        <line x1="14" y1="12" x2="14" y2="17" stroke="#3B2417" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="14" cy="10.5" r="1.4" fill="#C85A78"/>
+      </svg>
+      <span class="font-display font-bold text-lg tracking-tight">Baba Cake Shop</span>
+    </a>
+    <nav class="hidden md:flex gap-8 text-sm font-medium text-cocoasoft">
+      <a href="#about" class="hover:text-frostingdeep transition-colors">About</a>
+      <a href="#menu" class="hover:text-frostingdeep transition-colors">Menu</a>
+      <a href="#gallery" class="hover:text-frostingdeep transition-colors">Gallery</a>
+      <a href="#reviews" class="hover:text-frostingdeep transition-colors">Reviews</a>
+      <a href="#location" class="hover:text-frostingdeep transition-colors">Location</a>
+    </nav>
+    <a href="https://wa.me/919970302060?text=Hi%20Baba%20Cake%20Shop%2C%20I%27d%20like%20to%20order%20a%20cake" target="_blank" rel="noopener"
+       class="inline-flex items-center gap-2 bg-cocoa text-paper px-4 py-2.5 rounded-full text-sm font-semibold hover:bg-frostingdeep transition-colors shadow-soft">
+      Order on WhatsApp
+    </a>
+  </div>
+</header>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/919970302060?text=Hi%20Baba%20Cake%20Shop%2C%20I%27d%20like%20to%20order%20a%20cake" target="_blank" rel="noopener"
+   class="wa-pulse fixed right-5 bottom-5 z-50 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-lift hover:scale-110 transition-transform"
+   aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" width="26" height="26" fill="#fff"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.35.63 4.55 1.83 6.5L4 29l7.66-1.78a12 12 0 0 0 4.36.82h.01c6.62 0 12.02-5.4 12.02-12.02C28.05 8.4 22.65 3 16.02 3zm0 21.9h-.01a10 10 0 0 1-5.09-1.4l-.36-.21-4.55 1.06 1.09-4.44-.24-.37a9.9 9.9 0 0 1-1.53-5.32C5.33 9.47 10.1 4.7 16.02 4.7c2.75 0 5.33 1.07 7.27 3.02a10.2 10.2 0 0 1 3.02 7.3c0 5.93-4.77 10.68-10.29 10.68zm5.63-7.77c-.31-.15-1.82-.9-2.1-1-.28-.1-.49-.15-.69.16-.2.3-.79 1-.97 1.2-.18.2-.36.23-.67.08-.31-.15-1.3-.48-2.47-1.53-.91-.81-1.53-1.82-1.71-2.12-.18-.31-.02-.47.13-.62.14-.14.31-.36.46-.54.15-.18.2-.31.31-.51.1-.2.05-.38-.03-.54-.08-.15-.69-1.66-.94-2.28-.25-.6-.5-.52-.69-.53h-.59c-.2 0-.53.08-.81.38-.28.31-1.06 1.04-1.06 2.53s1.09 2.93 1.24 3.13c.15.2 2.15 3.29 5.2 4.61.73.31 1.29.5 1.73.64.73.23 1.39.2 1.91.12.58-.09 1.82-.74 2.08-1.46.26-.72.26-1.33.18-1.46-.08-.13-.28-.2-.59-.36z"/></svg>
+</a>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="relative pt-16 pb-10 overflow-hidden">
+    <div class="blob1 absolute -top-10 -right-24 w-96 h-96 bg-frosting/25 rounded-full blur-3xl"></div>
+    <div class="blob2 absolute top-40 -left-24 w-80 h-80 bg-gold/20 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="reveal in" style="transition-delay:.05s">
+        <div class="flex items-center gap-3 mb-5 flex-wrap">
+          <span class="inline-flex items-center gap-1.5 bg-paper border border-gold/70 text-cocoa text-xs font-semibold px-3 py-1.5 rounded-full shadow-soft">★ <b class="font-display">4.5</b> on Google</span>
+          <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1.5 rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span> Open now
+          </span>
+        </div>
+        <h1 class="font-display font-bold text-5xl md:text-6xl leading-[1.05] max-w-xl">
+          Cidco's cake shop, <span class="font-script font-normal grad-text text-6xl md:text-7xl">baked fresh</span> every morning
+        </h1>
+        <p class="mt-5 text-cocoasoft text-lg max-w-md">Birthday cakes, custom orders and everyday pastries from a shop your neighbours already trust — right on N-6 Main Road, Chhatrapati Sambhajinagar.</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="https://wa.me/919970302060?text=Hi%20Baba%20Cake%20Shop%2C%20I%27d%20like%20to%20order%20a%20cake" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 bg-frostingdeep text-paper px-6 py-3.5 rounded-full font-semibold shadow-lift hover:-translate-y-0.5 hover:shadow-xl transition-all">
+            Order on WhatsApp
+          </a>
+          <a href="tel:+919970302060" class="inline-flex items-center gap-2 border-1.5 border-cocoa px-6 py-3.5 rounded-full font-semibold hover:bg-cocoa hover:text-paper transition-colors">
+            Call the Shop
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal-scale in relative" style="transition-delay:.15s">
+        <div class="absolute inset-0 m-auto w-[92%] aspect-square rounded-full bg-paper shadow-lift"></div>
+        <svg viewBox="0 0 320 320" class="relative">
+          <ellipse cx="160" cy="255" rx="95" ry="14" fill="rgba(59,36,23,0.08)"/>
+          <rect x="80" y="150" width="160" height="80" rx="6" fill="#FBEFD8" stroke="#3B2417" stroke-width="2"/>
+          <rect x="80" y="150" width="160" height="18" fill="#E38EA6"/>
+          <rect x="95" y="100" width="130" height="55" rx="6" fill="#FFF7EA" stroke="#3B2417" stroke-width="2"/>
+          <rect x="95" y="100" width="130" height="16" fill="#C99A3A" opacity="0.85"/>
+          <path d="M95 150 Q108 138 121 150 Q134 138 147 150 Q160 138 173 150 Q186 138 199 150 Q212 138 225 150" fill="none" stroke="#C85A78" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="160" cy="88" r="5" fill="#C85A78"/>
+          <line x1="160" y1="88" x2="160" y2="68" stroke="#3B2417" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M160 68 C165 58 155 52 160 42" stroke="#C99A3A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="118" cy="130" r="4" fill="#E38EA6"/><circle cx="142" cy="125" r="4" fill="#C99A3A"/>
+          <circle cx="180" cy="128" r="4" fill="#E38EA6"/><circle cx="203" cy="132" r="4" fill="#C99A3A"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- trust strip -->
+    <div class="reveal in stagger max-w-6xl mx-auto px-6 mt-10 pt-6 border-t border-cocoa/10 flex flex-wrap justify-center gap-x-11 gap-y-4" style="transition-delay:.25s">
+      <div class="flex items-center gap-2.5 text-sm text-cocoasoft font-medium"><svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z" stroke="currentColor" stroke-width="1.4"/></svg> 4.5★ Google rating</div>
+      <div class="flex items-center gap-2.5 text-sm text-cocoasoft font-medium"><svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Freshly baked daily</div>
+      <div class="flex items-center gap-2.5 text-sm text-cocoasoft font-medium"><svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Custom orders welcome</div>
+      <div class="flex items-center gap-2.5 text-sm text-cocoasoft font-medium"><svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1v3.5c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1z" stroke="currentColor" stroke-width="1.4"/></svg> Same-day pickup available</div>
+    </div>
+
+    <svg class="scallop on-cream w-full h-9 block mt-10" viewBox="0 0 1200 34" preserveAspectRatio="none"><path d="M0,34 L0,14 Q15,0 30,14 T60,14 T90,14 T120,14 T150,14 T180,14 T210,14 T240,14 T270,14 T300,14 T330,14 T360,14 T390,14 T420,14 T450,14 T480,14 T510,14 T540,14 T570,14 T600,14 T630,14 T660,14 T690,14 T720,14 T750,14 T780,14 T810,14 T840,14 T870,14 T900,14 T930,14 T960,14 T990,14 T1020,14 T1050,14 T1080,14 T1110,14 T1140,14 T1170,14 T1200,14 L1200,34 Z" fill="#FFFDF8"/></svg>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="bg-paper pt-2 pb-20">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <div class="reveal">
+        <span class="font-script text-2xl text-frostingdeep block mb-1">Since day one</span>
+        <h2 class="font-display font-bold text-3xl md:text-4xl mb-4">A neighbourhood bakery, not a factory</h2>
+        <p class="text-cocoasoft mb-3">Every cake at Baba Cake Shop is made to order in small batches — no long shelf life, no shortcuts. Whether it's a last-minute birthday or a full wedding order, it's baked, iced and boxed by hand at Arun Uday Colony, N-6, Cidco.</p>
+        <p class="text-cocoasoft mb-8">We keep our menu simple on purpose: a handful of things done properly, every single day, rather than a hundred things done average.</p>
+        <div class="flex gap-9 flex-wrap">
+          <div><span class="font-display font-bold text-3xl block countup" data-count="4.5">0</span><span class="text-xs text-cocoasoft">Google rating</span></div>
+          <div><span class="font-display font-bold text-3xl block">Daily</span><span class="text-xs text-cocoasoft">Fresh baking</span></div>
+          <div><span class="font-display font-bold text-3xl block">Custom</span><span class="text-xs text-cocoasoft">Orders welcome</span></div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <svg viewBox="0 0 400 300" class="w-full">
+          <rect x="10" y="10" width="380" height="280" rx="20" fill="#FBF1DE"/>
+          <rect x="60" y="170" width="120" height="80" rx="4" fill="#FFF7EA" stroke="#3B2417" stroke-width="2"/>
+          <rect x="60" y="170" width="120" height="14" fill="#C99A3A"/>
+          <rect x="220" y="130" width="130" height="120" rx="4" fill="#FBEFD8" stroke="#3B2417" stroke-width="2"/>
+          <rect x="220" y="130" width="130" height="16" fill="#E38EA6"/>
+          <rect x="220" y="180" width="130" height="16" fill="#E38EA6" opacity="0.55"/>
+          <circle cx="285" cy="118" r="5" fill="#C85A78"/>
+          <line x1="285" y1="118" x2="285" y2="100" stroke="#3B2417" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="90" cy="200" r="30" fill="#F4D9E1" stroke="#3B2417" stroke-width="1.5"/>
+          <path d="M75 200a15 12 0 1 1 30 0a15 12 0 1 1 -30 0" fill="none" stroke="#C85A78" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="bg-cream py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center max-w-lg mx-auto mb-12">
+        <span class="font-script text-2xl text-frostingdeep block mb-1">Why people come back</span>
+        <h2 class="font-display font-bold text-3xl md:text-4xl">What makes it worth the trip</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 reveal stagger">
+        <div class="tilt bg-paper rounded-3xl p-7 shadow-soft border border-cocoa/10" style="--i:0">
+          <svg class="w-10 h-10 text-frostingdeep mb-4" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <h3 class="font-display font-semibold text-lg mb-2">Baked same day</h3>
+          <p class="text-sm text-cocoasoft">Nothing sits in a freezer for weeks — cakes are made close to the day you order for.</p>
+        </div>
+        <div class="tilt bg-paper rounded-3xl p-7 shadow-soft border border-cocoa/10" style="--i:1">
+          <svg class="w-10 h-10 text-frostingdeep mb-4" viewBox="0 0 24 24" fill="none"><path d="M4 20l4-4M4 20v-4M4 20h4M20 4l-4 4M20 4v4M20 4h-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="9" y="9" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+          <h3 class="font-display font-semibold text-lg mb-2">Made to your design</h3>
+          <p class="text-sm text-cocoasoft">Send a reference photo on WhatsApp and we'll match flavour, size and message on the cake.</p>
+        </div>
+        <div class="tilt bg-paper rounded-3xl p-7 shadow-soft border border-cocoa/10" style="--i:2">
+          <svg class="w-10 h-10 text-frostingdeep mb-4" viewBox="0 0 24 24" fill="none"><path d="M3 12l7 7L21 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3 class="font-display font-semibold text-lg mb-2">Trusted locally</h3>
+          <p class="text-sm text-cocoasoft">Rated 4.5★ by customers around Cidco — most of our orders come from repeat regulars.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="bg-paper py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center max-w-lg mx-auto mb-12">
+        <span class="font-script text-2xl text-frostingdeep block mb-1">What we bake</span>
+        <h2 class="font-display font-bold text-3xl md:text-4xl">A few favourites</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5 reveal stagger">
+        <div class="tilt bg-cream rounded-3xl p-6 text-center shadow-soft border border-cocoa/10" style="--i:0">
+          <svg class="w-14 h-14 mx-auto mb-3" viewBox="0 0 60 60"><rect x="12" y="26" width="36" height="22" rx="3" fill="#FBEFD8" stroke="#3B2417" stroke-width="2"/><rect x="12" y="26" width="36" height="8" fill="#E38EA6"/><line x1="30" y1="20" x2="30" y2="8" stroke="#3B2417" stroke-width="2" stroke-linecap="round"/><circle cx="30" cy="6" r="3" fill="#C85A78"/></svg>
+          <h3 class="font-display font-semibold mb-1">Birthday Cakes</h3>
+          <p class="text-xs text-cocoasoft">Custom flavours &amp; photo prints</p>
+        </div>
+        <div class="tilt bg-cream rounded-3xl p-6 text-center shadow-soft border border-cocoa/10" style="--i:1">
+          <svg class="w-14 h-14 mx-auto mb-3" viewBox="0 0 60 60"><path d="M18 40h24l-3 -20a9 9 0 0 0 -18 0z" fill="#FFF7EA" stroke="#3B2417" stroke-width="2"/><path d="M20 40h20v6a3 3 0 0 1 -3 3h-14a3 3 0 0 1 -3 -3z" fill="#C99A3A" stroke="#3B2417" stroke-width="2"/></svg>
+          <h3 class="font-display font-semibold mb-1">Cupcakes</h3>
+          <p class="text-xs text-cocoasoft">Boxed by the dozen</p>
+        </div>
+        <div class="tilt bg-cream rounded-3xl p-6 text-center shadow-soft border border-cocoa/10" style="--i:2">
+          <svg class="w-14 h-14 mx-auto mb-3" viewBox="0 0 60 60"><rect x="10" y="24" width="40" height="24" rx="4" fill="#FBEFD8" stroke="#3B2417" stroke-width="2"/><path d="M14 24c4-8 28-8 32 0" fill="none" stroke="#C85A78" stroke-width="2.5"/><circle cx="24" cy="20" r="2.5" fill="#E38EA6"/><circle cx="36" cy="20" r="2.5" fill="#C99A3A"/></svg>
+          <h3 class="font-display font-semibold mb-1">Pastries</h3>
+          <p class="text-xs text-cocoasoft">Fresh cream &amp; fruit, daily</p>
+        </div>
+        <div class="tilt bg-cream rounded-3xl p-6 text-center shadow-soft border border-cocoa/10" style="--i:3">
+          <svg class="w-14 h-14 mx-auto mb-3" viewBox="0 0 60 60"><rect x="14" y="18" width="32" height="30" rx="4" fill="#FFF7EA" stroke="#3B2417" stroke-width="2"/><path d="M14 30h32M14 38h32" stroke="#E38EA6" stroke-width="2"/><circle cx="30" cy="14" r="3" fill="#C85A78"/><line x1="30" y1="17" x2="30" y2="18" stroke="#3B2417" stroke-width="2"/></svg>
+          <h3 class="font-display font-semibold mb-1">Custom &amp; Wedding</h3>
+          <p class="text-xs text-cocoasoft">Tiered &amp; bulk orders</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY (with lightbox) -->
+  <section id="gallery" class="bg-cream py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center max-w-lg mx-auto mb-10">
+        <span class="font-script text-2xl text-frostingdeep block mb-1">A peek inside</span>
+        <h2 class="font-display font-bold text-3xl md:text-4xl">Fresh from the counter</h2>
+        <p class="text-xs text-cocoasoft mt-3">Tap any tile to zoom — swap these for real photos once you have them.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[130px] md:auto-rows-[140px] gap-3.5 reveal stagger">
+        <button class="lb-open col-span-2 row-span-2 rounded-2xl shadow-soft relative overflow-hidden group" style="--i:0" data-caption="Signature red velvet">
+          <div class="w-full h-full bg-gradient-to-br from-[#F4D9E1] to-[#FBEFD8] flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+            <svg class="w-1/2 h-1/2" viewBox="0 0 100 100"><circle cx="50" cy="55" r="30" fill="none" stroke="#3B2417" stroke-width="2"/><path d="M25 45c8-14 42-14 50 0" fill="none" stroke="#C85A78" stroke-width="3"/></svg>
+          </div>
+          <span class="absolute bottom-2 left-2.5 text-[11px] font-semibold bg-paper/85 px-2.5 py-1 rounded-full">Signature red velvet</span>
+        </button>
+        <button class="lb-open rounded-2xl shadow-soft relative overflow-hidden group" style="--i:1" data-caption="Chocolate truffle">
+          <div class="w-full h-full bg-gradient-to-br from-[#FBEFD8] to-[#F4E3B8] flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+            <svg class="w-3/5 h-3/5" viewBox="0 0 100 100"><rect x="25" y="35" width="50" height="35" rx="4" fill="none" stroke="#3B2417" stroke-width="2"/></svg>
+          </div>
+          <span class="absolute bottom-2 left-2.5 text-[11px] font-semibold bg-paper/85 px-2.5 py-1 rounded-full">Chocolate truffle</span>
+        </button>
+        <button class="lb-open rounded-2xl shadow-soft relative overflow-hidden group" style="--i:2" data-caption="Cupcake box">
+          <div class="w-full h-full bg-gradient-to-br from-[#FFF7EA] to-[#F4D9E1] flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+            <svg class="w-3/5 h-3/5" viewBox="0 0 100 100"><path d="M30 65h40l-4-25a16 16 0 0 0-32 0z" fill="none" stroke="#3B2417" stroke-width="2"/></svg>
+          </div>
+          <span class="absolute bottom-2 left-2.5 text-[11px] font-semibold bg-paper/85 px-2.5 py-1 rounded-full">Cupcake box</span>
+        </button>
+        <button class="lb-open rounded-2xl shadow-soft relative overflow-hidden group" style="--i:3" data-caption="Pineapple pastry">
+          <div class="w-full h-full bg-gradient-to-br from-[#F4E3B8] to-[#FBEFD8] flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+            <svg class="w-3/5 h-3/5" viewBox="0 0 100 100"><rect x="20" y="30" width="60" height="40" rx="6" fill="none" stroke="#3B2417" stroke-width="2"/></svg>
+          </div>
+          <span class="absolute bottom-2 left-2.5 text-[11px] font-semibold bg-paper/85 px-2.5 py-1 rounded-full">Pineapple pastry</span>
+        </button>
+        <button class="lb-open rounded-2xl shadow-soft relative overflow-hidden group" style="--i:4" data-caption="Custom order">
+          <div class="w-full h-full bg-gradient-to-br from-[#F4D9E1] to-[#F0DCEB] flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+            <svg class="w-3/5 h-3/5" viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="#3B2417" stroke-width="2"/></svg>
+          </div>
+          <span class="absolute bottom-2 left-2.5 text-[11px] font-semibold bg-paper/85 px-2.5 py-1 rounded-full">Custom order</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- lightbox overlay -->
+  <div id="lightbox" class="hidden-lb fixed inset-0 z-[100] bg-cocoa/80 backdrop-blur-sm flex items-center justify-center p-6">
+    <div class="bg-paper rounded-3xl p-8 max-w-sm w-full text-center shadow-lift">
+      <div id="lb-icon" class="w-32 h-32 mx-auto mb-4 bg-cream rounded-full flex items-center justify-center">🎂</div>
+      <p id="lb-caption" class="font-display font-semibold text-lg mb-1"></p>
+      <p class="text-xs text-cocoasoft mb-5">Placeholder image — real photo goes here</p>
+      <button id="lb-close" class="bg-cocoa text-paper px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-frostingdeep transition-colors">Close</button>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <section class="bg-paper py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center max-w-lg mx-auto mb-12">
+        <span class="font-script text-2xl text-frostingdeep block mb-1">Simple as that</span>
+        <h2 class="font-display font-bold text-3xl md:text-4xl">How to order</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 reveal stagger">
+        <div class="text-center" style="--i:0">
+          <div class="w-11 h-11 rounded-full bg-frostingdeep text-paper font-display font-bold flex items-center justify-center mx-auto mb-3.5">1</div>
+          <h3 class="font-semibold text-sm mb-1.5">Message us</h3>
+          <p class="text-xs text-cocoasoft">Tap the WhatsApp button and tell us the occasion.</p>
+        </div>
+        <div class="text-center" style="--i:1">
+          <div class="w-11 h-11 rounded-full bg-frostingdeep text-paper font-display font-bold flex items-center justify-center mx-auto mb-3.5">2</div>
+          <h3 class="font-semibold text-sm mb-1.5">Pick flavour &amp; size</h3>
+          <p class="text-xs text-cocoasoft">We'll help you choose based on guest count and budget.</p>
+        </div>
+        <div class="text-center" style="--i:2">
+          <div class="w-11 h-11 rounded-full bg-frostingdeep text-paper font-display font-bold flex items-center justify-center mx-auto mb-3.5">3</div>
+          <h3 class="font-semibold text-sm mb-1.5">Confirm design</h3>
+          <p class="text-xs text-cocoasoft">Share a reference photo or message for the cake, if any.</p>
+        </div>
+        <div class="text-center" style="--i:3">
+          <div class="w-11 h-11 rounded-full bg-frostingdeep text-paper font-display font-bold flex items-center justify-center mx-auto mb-3.5">4</div>
+          <h3 class="font-semibold text-sm mb-1.5">Pick up or collect</h3>
+          <p class="text-xs text-cocoasoft">Ready at Shop No 01, Cidco, on the date you need it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL CAROUSEL -->
+  <section id="reviews" class="bg-cream py-20 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center max-w-lg mx-auto mb-10">
+        <span class="font-script text-2xl text-frostingdeep block mb-1">From Google reviews</span>
+        <h2 class="font-display font-bold text-3xl md:text-4xl">What customers say</h2>
+      </div>
+    </div>
+    <div class="marquee-wrap reveal">
+      <div class="marquee-track flex gap-5 w-max px-6">
+        <div class="w-72 shrink-0 bg-paper rounded-3xl p-6 shadow-soft border border-cocoa/10">
+          <div class="text-gold text-sm mb-2 tracking-widest">★★★★★</div>
+          <p class="text-sm text-cocoasoft mb-4">Ordered a last-minute birthday cake and they managed it the same evening. Tasted fresh, not overly sweet.</p>
+          <div class="font-semibold text-sm">Priya D.</div><div class="text-xs text-cocoasoft">Cidco, Sambhajinagar</div>
+        </div>
+        <div class="w-72 shrink-0 bg-paper rounded-3xl p-6 shadow-soft border border-cocoa/10">
+          <div class="text-gold text-sm mb-2 tracking-widest">★★★★★</div>
+          <p class="text-sm text-cocoasoft mb-4">Good quality cakes at fair prices. This is now our go-to shop for every family birthday.</p>
+          <div class="font-semibold text-sm">Rahul K.</div><div class="text-xs text-cocoasoft">N-6, Cidco</div>
+        </div>
+        <div class="w-72 shrink-0 bg-paper rounded-3xl p-6 shadow-soft border border-cocoa/10">
+          <div class="text-gold text-sm mb-2 tracking-widest">★★★★☆</div>
+          <p class="text-sm text-cocoasoft mb-4">Friendly staff, quick service. The custom design cake came out close to the photo I sent them.</p>
+          <div class="font-semibold text-sm">Sana M.</div><div class="text-xs text-cocoasoft">Chhatrapati Sambhajinagar</div>
+        </div>
+        <div class="w-72 shrink-0 bg-paper rounded-3xl p-6 shadow-soft border border-cocoa/10">
+          <div class="text-gold text-sm mb-2 tracking-widest">★★★★★</div>
+          <p class="text-sm text-cocoasoft mb-4">Ordered a last-minute birthday cake and they managed it the same evening. Tasted fresh, not overly sweet.</p>
+          <div class="font-semibold text-sm">Priya D.</div><div class="text-xs text-cocoasoft">Cidco, Sambhajinagar</div>
+        </div>
+        <div class="w-72 shrink-0 bg-paper rounded-3xl p-6 shadow-soft border border-cocoa/10">
+          <div class="text-gold text-sm mb-2 tracking-widest">★★★★★</div>
+          <p class="text-sm text-cocoasoft mb-4">Good quality cakes at fair prices. This is now our go-to shop for every family birthday.</p>
+          <div class="font-semibold text-sm">Rahul K.</div><div class="text-xs text-cocoasoft">N-6, Cidco</div>
+        </div>
+        <div class="w-72 shrink-0 bg-paper rounded-3xl p-6 shadow-soft border border-cocoa/10">
+          <div class="text-gold text-sm mb-2 tracking-widest">★★★★☆</div>
+          <p class="text-sm text-cocoasoft mb-4">Friendly staff, quick service. The custom design cake came out close to the photo I sent them.</p>
+          <div class="font-semibold text-sm">Sana M.</div><div class="text-xs text-cocoasoft">Chhatrapati Sambhajinagar</div>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-xs text-cocoasoft mt-7 px-6">Sample reviews shown for demo — replace with real Google review quotes before going live.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-paper py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center max-w-lg mx-auto mb-10">
+        <span class="font-script text-2xl text-frostingdeep block mb-1">Good to know</span>
+        <h2 class="font-display font-bold text-3xl md:text-4xl">Frequently asked questions</h2>
+      </div>
+      <div class="max-w-2xl mx-auto flex flex-col gap-3 reveal">
+        <details class="bg-cream rounded-2xl px-5 py-4 border border-cocoa/10 group">
+          <summary class="cursor-pointer font-semibold text-sm flex justify-between items-center list-none">How much notice do you need for a custom cake?
+            <span class="text-frostingdeep text-xl transition-transform group-open:rotate-45">+</span></summary>
+          <p class="text-sm text-cocoasoft mt-3">For simple designs, same-day or next-day is usually possible. For elaborate tiered or wedding cakes, 2–3 days' notice helps us plan better.</p>
+        </details>
+        <details class="bg-cream rounded-2xl px-5 py-4 border border-cocoa/10 group">
+          <summary class="cursor-pointer font-semibold text-sm flex justify-between items-center list-none">Do you deliver, or is it pickup only?
+            <span class="text-frostingdeep text-xl transition-transform group-open:rotate-45">+</span></summary>
+          <p class="text-sm text-cocoasoft mt-3">Message us on WhatsApp with your location — we can confirm if delivery is possible for your area, or you can collect from the shop.</p>
+        </details>
+        <details class="bg-cream rounded-2xl px-5 py-4 border border-cocoa/10 group">
+          <summary class="cursor-pointer font-semibold text-sm flex justify-between items-center list-none">Can I send a reference photo for the design?
+            <span class="text-frostingdeep text-xl transition-transform group-open:rotate-45">+</span></summary>
+          <p class="text-sm text-cocoasoft mt-3">Yes — send it directly on WhatsApp along with the message you'd like written on the cake.</p>
+        </details>
+        <details class="bg-cream rounded-2xl px-5 py-4 border border-cocoa/10 group">
+          <summary class="cursor-pointer font-semibold text-sm flex justify-between items-center list-none">What payment methods do you accept?
+            <span class="text-frostingdeep text-xl transition-transform group-open:rotate-45">+</span></summary>
+          <p class="text-sm text-cocoasoft mt-3">Cash and UPI are accepted at the shop. Confirm payment details with us directly when placing a larger order.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location" class="bg-cream py-20">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+      <div class="reveal bg-paper rounded-3xl p-8 shadow-soft border border-cocoa/10 flex flex-col gap-5 justify-center">
+        <h2 class="font-display font-bold text-2xl">Find us in Cidco</h2>
+        <div class="flex gap-3.5">
+          <svg class="w-5 h-5 text-frostingdeep mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div><b class="block text-sm">Address</b><span class="text-sm text-cocoasoft">Shop No 01, Arun Uday Colony, N-6, Cidco, Chhatrapati Sambhajinagar, Maharashtra 431003</span></div>
+        </div>
+        <div class="flex gap-3.5">
+          <svg class="w-5 h-5 text-frostingdeep mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1v3.5c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1z" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div><b class="block text-sm">Phone</b><span class="text-sm text-cocoasoft"><a href="tel:+919970302060" class="hover:text-frostingdeep">09970302060</a></span></div>
+        </div>
+        <div class="flex gap-3.5">
+          <svg class="w-5 h-5 text-frostingdeep mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <div><b class="block text-sm">Hours</b><span class="text-sm text-cocoasoft">Open daily · closes 10 PM</span></div>
+        </div>
+        <a href="https://www.google.com/maps/place/BABA+CAKE+SHOP/data=!4m7!3m6!1s0x3bdba3e55c285b31:0xcdcef9fe74549441!8m2!3d19.8808452!4d75.3588474!16s%2Fg%2F11gjrlgdxp!19sChIJMVsoXOWj2zsRQZRUdP75zs0" target="_blank" rel="noopener"
+           class="self-start inline-flex items-center gap-2 bg-frostingdeep text-paper px-5 py-3 rounded-full text-sm font-semibold shadow-soft hover:-translate-y-0.5 transition-transform mt-1">Get Directions</a>
+      </div>
+      <div class="reveal rounded-3xl overflow-hidden shadow-soft border border-cocoa/10 min-h-[280px]" style="transition-delay:.1s">
+        <iframe class="w-full h-full min-h-[280px] border-0"
+          src="https://www.google.com/maps?q=BABA+CAKE+SHOP,+Shop+No+01,+Arun+Uday+Colony,+N-6,+Cidco,+Chhatrapati+Sambhajinagar,+Maharashtra+431003&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Baba Cake Shop location"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-cocoa text-paper py-20 text-center relative overflow-hidden">
+    <div class="blob1 absolute -top-16 left-1/4 w-72 h-72 bg-frosting/10 rounded-full blur-3xl"></div>
+    <div class="max-w-6xl mx-auto px-6 relative reveal">
+      <h2 class="font-display font-bold text-3xl md:text-4xl max-w-md mx-auto mb-3">Ready to order your next cake?</h2>
+      <p class="text-[#E9D9CC] max-w-md mx-auto mb-8">Send us the occasion, flavour and date on WhatsApp — we'll take it from there.</p>
+      <a href="https://wa.me/919970302060?text=Hi%20Baba%20Cake%20Shop%2C%20I%27d%20like%20to%20order%20a%20cake" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 bg-frosting text-cocoa px-7 py-3.5 rounded-full font-semibold shadow-lift hover:-translate-y-0.5 hover:shadow-xl transition-all">Message on WhatsApp</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-cocoa text-[#C9B7A9] py-7 text-sm">
+  <div class="max-w-6xl mx-auto px-6 flex flex-wrap items-center justify-between gap-2.5">
+    <span>© 2026 Baba Cake Shop, Cidco</span>
+    <span><a href="tel:+919970302060" class="text-[#E9D9CC] hover:underline">09970302060</a> · Shop No 01, Arun Uday Colony, N-6</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .reveal-scale').forEach(el=> io.observe(el));
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', ()=>{
+    nav.classList.toggle('scrolled', window.scrollY > 12);
+  });
+
+  const countEl = document.querySelector('.countup');
+  if(countEl){
+    const target = parseFloat(countEl.dataset.count);
+    let started = false;
+    const co = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting && !started){
+          started = true;
+          let cur = 0;
+          const step = ()=>{
+            cur += target/24;
+            if(cur >= target){ countEl.textContent = target.toFixed(1) + '★'; return; }
+            countEl.textContent = cur.toFixed(1);
+            requestAnimationFrame(step);
+          };
+          step();
+        }
+      });
+    }, {threshold:0.5});
+    co.observe(countEl);
+  }
+
+  const lb = document.getElementById('lightbox');
+  const lbCaption = document.getElementById('lb-caption');
+  document.querySelectorAll('.lb-open').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      lbCaption.textContent = btn.dataset.caption;
+      lb.classList.remove('hidden-lb');
+    });
+  });
+  document.getElementById('lb-close').addEventListener('click', ()=> lb.classList.add('hidden-lb'));
+  lb.addEventListener('click', (e)=>{ if(e.target === lb) lb.classList.add('hidden-lb'); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') lb.classList.add('hidden-lb'); });
+</script>
+
+</body>
+</html>
